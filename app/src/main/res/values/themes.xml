@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema base: oscuro de marca. Reemplaza los colores por defecto de Material -->
+    <style name="Theme.IronMarket" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/im_lime</item>
+        <item name="colorOnPrimary">@color/im_ink</item>
+        <item name="colorPrimaryContainer">@color/im_lime_dark</item>
+        <item name="colorOnPrimaryContainer">@color/im_lime</item>
+        <item name="colorSecondary">@color/im_orange</item>
+        <item name="colorOnSecondary">@color/im_ink</item>
+        <item name="colorError">@color/im_danger</item>
+        <item name="android:colorBackground">@color/im_bg</item>
+        <item name="colorSurface">@color/im_bg</item>
+        <item name="colorOnSurface">@color/im_text</item>
+        <item name="colorOnSurfaceVariant">@color/im_text_muted</item>
+        <item name="colorSurfaceContainer">@color/im_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/im_surface_high</item>
+        <item name="colorSurfaceContainerHighest">@color/im_surface_high</item>
+        <item name="colorOutline">@color/im_stroke</item>
+        <item name="android:statusBarColor">@color/im_bg</item>
+        <item name="android:navigationBarColor">@color/im_nav</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="fontFamily">@font/barlow</item>
+        <item name="android:fontFamily">@font/barlow</item>
+        <item name="materialButtonStyle">@style/Widget.IronMarket.Button</item>
+        <item name="textInputStyle">@style/Widget.IronMarket.TextInput</item>
+        <item name="chipStyle">@style/Widget.IronMarket.Chip</item>
+        <item name="materialCardViewStyle">@style/Widget.IronMarket.Card</item>
+        <item name="bottomNavigationStyle">@style/Widget.IronMarket.BottomNav</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.IronMarket.Dialog</item>
+    </style>
+
+    <!-- Variantes por rol: solo cambia el color de acento (doc. técnico, sección 5) -->
+    <style name="Theme.IronMarket.Buyer" parent="Theme.IronMarket" />
+
+    <style name="Theme.IronMarket.Seller" parent="Theme.IronMarket">
+        <item name="colorPrimary">@color/im_orange</item>
+        <item name="colorPrimaryContainer">@color/im_orange_dark</item>
+        <item name="colorOnPrimaryContainer">@color/im_orange</item>
+    </style>
+
+    <style name="Theme.IronMarket.Admin" parent="Theme.IronMarket">
+        <item name="colorPrimary">@color/im_blue</item>
+        <item name="colorPrimaryContainer">@color/im_blue_dark</item>
+        <item name="colorOnPrimaryContainer">@color/im_blue</item>
+    </style>
+
+    <!-- Tema del splash: fondo de marca desde el primer cuadro -->
+    <style name="Theme.IronMarket.Splash" parent="Theme.IronMarket">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:statusBarColor">@color/im_bg</item>
+        <item name="android:navigationBarColor">@color/im_bg</item>
+    </style>
+
+    <style name="ThemeOverlay.IronMarket.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorSurface">@color/im_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/im_surface</item>
+        <item name="fontFamily">@font/barlow</item>
+        <item name="android:fontFamily">@font/barlow</item>
+    </style>
+</resources>

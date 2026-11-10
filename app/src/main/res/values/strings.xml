@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IronMarket</string>
+    <string name="tagline">Todo para entrenar, en un solo lugar</string>
+
+    <!-- Navegación -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_catalog">Catálogo</string>
+    <string name="nav_cart">Carrito</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_products">Productos</string>
+    <string name="nav_orders">Pedidos</string>
+    <string name="nav_dashboard">Panel</string>
+    <string name="nav_users">Usuarios</string>
+    <string name="nav_sales">Ventas</string>
+
+    <!-- Autenticación -->
+    <string name="login_title">Bienvenido\nde vuelta</string>
+    <string name="login_subtitle">Ingresa para seguir comprando o vendiendo.</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="login_biometric">Ingresar con huella</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="no_account">¿No tienes cuenta? Regístrate</string>
+    <string name="demo_accounts">Cuentas de prueba (contraseña 123456)</string>
+    <string name="role_buyer">Comprador</string>
+    <string name="role_seller">Vendedor</string>
+    <string name="role_admin">Admin</string>
+    <string name="register_title">Crea tu cuenta</string>
+    <string name="full_name">Nombre completo</string>
+    <string name="phone">Celular</string>
+    <string name="register_button">Crear cuenta</string>
+    <string name="consent_data">Autorizo el tratamiento de mis datos personales según la Política de datos (Ley 1581 de 2012).</string>
+    <string name="consent_bio">Activar ingreso con huella. Mi huella se valida solo en el dispositivo y no se almacena en IronMarket.</string>
+    <string name="recover_title">Recupera tu contraseña</string>
+    <string name="recover_subtitle">Escribe el correo de tu cuenta y te enviaremos un enlace para crear una nueva contraseña.</string>
+    <string name="recover_button">Enviar enlace</string>
+    <string name="recover_done_title">Revisa tu correo</string>
+    <string name="recover_done_body">Si el correo está registrado, recibirás un enlace válido por 1 hora.</string>
+    <string name="back_to_login">Volver a iniciar sesión</string>
+    <string name="bio_prompt_title">Ingresar a IronMarket</string>
+    <string name="bio_prompt_subtitle">Usa tu huella para continuar</string>
+    <string name="bio_pay_title">Confirmar pago</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- Errores de validación -->
+    <string name="error_email">Escribe un correo válido</string>
+    <string name="error_password">Mínimo 6 caracteres</string>
+    <string name="error_required">Campo obligatorio</string>
+    <string name="error_credentials">Correo o contraseña incorrectos</string>
+    <string name="error_consent">Debes aceptar la política de datos</string>
+
+    <!-- Comprador -->
+    <string name="search_hint">Proteína, mancuernas, guantes…</string>
+    <string name="best_sellers">Más vendidos</string>
+    <string name="see_all">Ver todo</string>
+    <string name="add_to_cart">Agregar al carrito</string>
+    <string name="go_to_pay">Ir a pagar</string>
+    <string name="cart_title">Tu carrito</string>
+    <string name="cart_empty">Tu carrito está vacío.\nExplora el catálogo y agrega productos.</string>
+    <string name="checkout_title">Pagar pedido</string>
+    <string name="confirm_payment">Confirmar pago</string>
+    <string name="payment_secure">Pago cifrado por pasarela externa. IronMarket no guarda tu tarjeta.</string>
+
+    <!-- Vendedor / Administrador -->
+    <string name="new_product">Nuevo producto</string>
+    <string name="edit_product">Editar producto</string>
+    <string name="save">Guardar</string>
+    <string name="delete">Eliminar</string>
+    <string name="new_user">Nuevo usuario</string>
+    <string name="edit_user">Editar usuario</string>
+    <string name="logout">Cerrar sesión</string>
+</resources>

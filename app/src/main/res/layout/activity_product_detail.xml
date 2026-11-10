@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Detalle de producto: imagen, datos sanitarios, envío, retracto, cantidad y agregar al carrito -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/im_bg"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@color/im_surface">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    app:tint="?attr/colorPrimary" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/backButton"
+                    style="@style/Widget.IronMarket.IconButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="@dimen/space_l"
+                    android:contentDescription="Volver"
+                    app:icon="@drawable/ic_back" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/screen_padding">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/invimaBadge"
+                        style="@style/Text.IronMarket.Badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/space_s" />
+
+                    <TextView
+                        android:id="@+id/conditionBadge"
+                        style="@style/Text.IronMarket.Badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@style/Text.IronMarket.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:fontFamily="@font/barlow_bold"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/seller"
+                    style="@style/Text.IronMarket.Muted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:drawablePadding="6dp"
+                    app:drawableStartCompat="@drawable/ic_store"
+                    app:drawableTint="@color/im_text_muted" />
+
+                <TextView
+                    android:id="@+id/price"
+                    style="@style/Text.IronMarket.Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/description"
+                    style="@style/Text.IronMarket.Body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_s"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="@color/im_text_muted" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_l"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_l">
+
+                    <TextView
+                        style="@style/Text.IronMarket.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/space_m"
+                        android:gravity="center_vertical"
+                        android:text="Llega mañana · envío $8.000 o recoge gratis"
+                        android:textSize="14sp"
+                        app:drawableStartCompat="@drawable/ic_truck"
+                        app:drawableTint="?attr/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/stock"
+                        style="@style/Text.IronMarket.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_m"
+                        android:drawablePadding="@dimen/space_m"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp"
+                        app:drawableStartCompat="@drawable/ic_box"
+                        app:drawableTint="?attr/colorPrimary" />
+
+                    <TextView
+                        style="@style/Text.IronMarket.Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_m"
+                        android:drawablePadding="@dimen/space_m"
+                        android:gravity="center_vertical"
+                        android:text="Derecho de retracto: 5 días hábiles"
+                        android:textSize="14sp"
+                        app:drawableStartCompat="@drawable/ic_refresh"
+                        app:drawableTint="?attr/colorPrimary" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/im_nav"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_l">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/bg_rounded"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/minusButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:contentDescription="Quitar uno"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:text="−"
+                android:textColor="@color/im_text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/quantity"
+                style="@style/Text.IronMarket.Body"
+                android:layout_width="28dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/barlow_bold"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="17sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/plusButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:contentDescription="Agregar uno"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:text="+"
+                android:textColor="@color/im_text"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_m"
+            android:layout_weight="1"
+            android:text="@string/add_to_cart"
+            app:icon="@drawable/ic_cart" />
+    </LinearLayout>
+</LinearLayout>

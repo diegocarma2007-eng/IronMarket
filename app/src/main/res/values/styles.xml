@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Estilos reutilizables de componentes y textos -->
+<resources>
+    <!-- Botón principal: alto de 54dp, esquinas de 14dp, texto en negrita -->
+    <style name="Widget.IronMarket.Button" parent="Widget.Material3.Button">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/radius_m</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <!-- Botón secundario con borde -->
+    <style name="Widget.IronMarket.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/radius_m</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/im_text</item>
+        <item name="strokeColor">@color/im_stroke</item>
+        <item name="backgroundTint">@color/im_surface</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="iconTint">?attr/colorPrimary</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <!-- Botón de texto (enlaces como "¿Olvidaste tu contraseña?") -->
+    <style name="Widget.IronMarket.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">@dimen/touch_target</item>
+    </style>
+
+    <!-- Botón de icono cuadrado (volver, acciones) -->
+    <style name="Widget.IronMarket.IconButton" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="backgroundTint">@color/im_surface</item>
+        <item name="iconTint">@color/im_text</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="strokeColor">@color/im_stroke</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- Campos de texto con borde y acento del rol -->
+    <style name="Widget.IronMarket.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/im_surface</item>
+        <item name="boxStrokeColor">?attr/colorPrimary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_m</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_m</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_m</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_m</item>
+        <item name="hintTextColor">?attr/colorPrimary</item>
+        <item name="startIconTint">@color/im_text_muted</item>
+        <item name="endIconTint">@color/im_text_muted</item>
+    </style>
+
+    <!-- Chips de filtro (categorías) -->
+    <style name="Widget.IronMarket.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="android:textColor">@color/chip_text</item>
+        <item name="chipStrokeColor">@color/im_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipCornerRadius">19dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Tarjetas: superficie gris oscuro con borde sutil -->
+    <style name="Widget.IronMarket.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/im_surface</item>
+        <item name="cardCornerRadius">@dimen/radius_l</item>
+        <item name="strokeColor">@color/im_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <!-- Menú inferior de navegación -->
+    <style name="Widget.IronMarket.BottomNav" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/im_nav</item>
+        <item name="itemIconTint">@color/nav_item</item>
+        <item name="itemTextColor">@color/nav_item</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.IronMarket.BottomNav.Indicator</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+    <style name="Widget.IronMarket.BottomNav.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">?attr/colorPrimaryContainer</item>
+    </style>
+
+    <!-- Tipografía -->
+    <style name="Text.IronMarket.Display" parent="">
+        <item name="android:fontFamily">@font/barlow_condensed_bold</item>
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">@color/im_text</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="Text.IronMarket.Section" parent="">
+        <item name="android:fontFamily">@font/barlow_condensed_bold</item>
+        <item name="android:textSize">@dimen/text_section</item>
+        <item name="android:textColor">@color/im_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="Text.IronMarket.Body" parent="">
+        <item name="android:fontFamily">@font/barlow</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/im_text</item>
+    </style>
+    <style name="Text.IronMarket.Muted" parent="Text.IronMarket.Body">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/im_text_muted</item>
+    </style>
+    <style name="Text.IronMarket.Label" parent="">
+        <item name="android:fontFamily">@font/barlow_semibold</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/im_text_muted</item>
+    </style>
+    <style name="Text.IronMarket.Price" parent="">
+        <item name="android:fontFamily">@font/barlow_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/im_text</item>
+    </style>
+    <!-- Etiqueta pequeña tipo "badge" -->
+    <style name="Text.IronMarket.Badge" parent="">
+        <item name="android:fontFamily">@font/barlow_bold</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:paddingStart">7dp</item>
+        <item name="android:paddingEnd">7dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:background">@drawable/bg_badge</item>
+    </style>
+</resources>

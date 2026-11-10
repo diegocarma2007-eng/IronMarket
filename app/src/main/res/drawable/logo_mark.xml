@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Logotipo: mancuerna sobre cuadrado verde lima -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="48dp" android:height="48dp" android:viewportWidth="48" android:viewportHeight="48">
+    <path android:pathData="M12,0h24a12,12 0,0 1,12 12v24a12,12 0,0 1,-12 12h-24a12,12 0,0 1,-12 -12v-24a12,12 0,0 1,12 -12z" android:fillColor="@color/im_lime" />
+    <path android:pathData="M15,14v20M10,18v12M33,14v20M38,18v12M15,24h18" android:strokeColor="@color/im_ink" android:strokeWidth="4" android:strokeLineCap="round" android:fillColor="#00000000" />
+</vector>

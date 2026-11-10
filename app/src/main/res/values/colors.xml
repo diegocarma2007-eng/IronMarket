@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Paleta de marca de IronMarket (sección 5 del documento técnico) -->
+<resources>
+    <!-- Fondos y superficies -->
+    <color name="im_bg">#FF0E0F11</color>
+    <color name="im_surface">#FF1A1C20</color>
+    <color name="im_surface_high">#FF24272C</color>
+    <color name="im_nav">#FF121316</color>
+    <color name="im_stroke">#FF2E3238</color>
+    <color name="im_divider">#FF23262B</color>
+
+    <!-- Texto -->
+    <color name="im_text">#FFF2F3F5</color>
+    <color name="im_text_muted">#FFA3A8B0</color>
+    <color name="im_text_dim">#FF8C929B</color>
+    <color name="im_ink">#FF0E0F11</color>
+
+    <!-- Acentos por rol -->
+    <color name="im_lime">#FFC6F432</color>
+    <color name="im_lime_dark">#FF2B3A10</color>
+    <color name="im_orange">#FFFF8A3D</color>
+    <color name="im_orange_dark">#FF3D2614</color>
+    <color name="im_blue">#FF6CB4FF</color>
+    <color name="im_blue_dark">#FF1E2C3D</color>
+
+    <!-- Estados -->
+    <color name="im_danger">#FFFF8A8A</color>
+    <color name="im_danger_dark">#FF3A1E1E</color>
+    <color name="im_warning">#FFF5C451</color>
+    <color name="im_warning_dark">#FF3D3214</color>
+</resources>
