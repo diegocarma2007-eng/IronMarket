@@ -1,0 +1,63 @@
+rules_version = '2';
+// Reglas de seguridad de Cloud Firestore para IronMarket.
+// Principio de mínimo privilegio: cada rol solo lee y escribe lo que le corresponde (RNF de seguridad).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function me() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function isAdmin() { return signedIn() && me().role == 'ADMIN'; }
+    function isSeller() { return signedIn() && me().role == 'VENDEDOR'; }
+
+    // ---------- Usuarios ----------
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      // Al registrarse solo se puede elegir Comprador o Vendedor; el correo administrador obtiene ADMIN
+      allow create: if (signedIn() && request.auth.uid == uid &&
+                        (request.resource.data.role in ['COMPRADOR', 'VENDEDOR'] ||
+                         (request.resource.data.role == 'ADMIN' && request.auth.token.email == 'admin@ironmarket.co')))
+                    || isAdmin();
+      // El usuario edita su perfil pero no puede cambiar su rol, su verificación ni reactivarse;
+      // sí puede eliminar su propia cuenta (deleted = true, active = false)
+      allow update: if isAdmin() ||
+                    (signedIn() && request.auth.uid == uid &&
+                     request.resource.data.role == resource.data.role &&
+                     request.resource.data.verified == resource.data.verified &&
+                     (request.resource.data.active == resource.data.active ||
+                      (request.resource.data.deleted == true && request.resource.data.active == false)));
+      allow delete: if isAdmin();
+    }
+
+    // ---------- Productos ----------
+    match /products/{pid} {
+      allow read: if resource.data.status == 'PUBLICADO'
+                  || (signedIn() && (resource.data.sellerId == request.auth.uid || isAdmin()));
+      // El vendedor crea productos propios en revisión; el administrador puede publicar directamente
+      allow create: if isAdmin() ||
+                    (isSeller() && request.resource.data.sellerId == request.auth.uid &&
+                     request.resource.data.status == 'EN_REVISION');
+      allow update: if isAdmin()
+                    || (signedIn() && resource.data.sellerId == request.auth.uid &&
+                        request.resource.data.status == 'EN_REVISION')
+                    // Al comprar solo se descuenta el stock y se suman las ventas
+                    || (signedIn() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['stock', 'sold']));
+      allow delete: if isAdmin() || (signedIn() && resource.data.sellerId == request.auth.uid);
+    }
+
+    // ---------- Carrito ----------
+    match /carts/{uid}/items/{pid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // ---------- Órdenes ----------
+    match /orders/{oid} {
+      allow read: if signedIn() && (resource.data.buyerId == request.auth.uid ||
+                                    resource.data.sellerId == request.auth.uid || isAdmin());
+      allow create: if signedIn() && request.resource.data.buyerId == request.auth.uid;
+      // Solo el vendedor de la orden o el administrador cambian el estado
+      allow update: if isAdmin() || (signedIn() && resource.data.sellerId == request.auth.uid &&
+                                     request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']));
+      allow delete: if isAdmin();
+    }
+  }
+}

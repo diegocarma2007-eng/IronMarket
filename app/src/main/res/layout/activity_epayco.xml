@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pasarela ePayco: WebView con el checkout oficial y barra superior para cancelar -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/im_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_m">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/closeButton"
+            style="@style/Widget.IronMarket.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="Cancelar pago"
+            app:icon="@drawable/ic_close" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/Text.IronMarket.Section"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_m"
+            android:layout_weight="1"
+            android:text="Pago seguro · ePayco" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:indeterminateTint="?attr/colorPrimary" />
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Solo en compilaciones de prueba: permite continuar la demostración si el sandbox no responde -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/simulateButton"
+        style="@style/Widget.IronMarket.Button.Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modo pruebas: simular pago aprobado"
+        android:textColor="@color/im_text_muted"
+        android:visibility="gone" />
+</LinearLayout>

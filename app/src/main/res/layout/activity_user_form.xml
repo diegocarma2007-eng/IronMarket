@@ -67,6 +67,23 @@
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_m"
+                android:hint="Contraseña inicial"
+                app:endIconMode="password_toggle"
+                app:helperText="El usuario podrá cambiarla con «¿Olvidaste tu contraseña?»"
+                app:startIconDrawable="@drawable/ic_lock">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 style="@style/Text.IronMarket.Label"
                 android:layout_width="wrap_content"

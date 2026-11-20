@@ -54,6 +54,7 @@
                 <TextView
                     android:id="@+id/role"
                     style="@style/Text.IronMarket.Badge"
+                    android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp" />
@@ -61,6 +62,7 @@
                 <TextView
                     android:id="@+id/state"
                     style="@style/Text.IronMarket.Badge"
+                    android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -69,7 +71,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/toggleButton"
             style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="48dp"
+            android:layout_width="44dp"
             android:layout_height="48dp"
             android:contentDescription="Suspender o reactivar"
             app:icon="@drawable/ic_block"
@@ -78,7 +80,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/editButton"
             style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="48dp"
+            android:layout_width="44dp"
             android:layout_height="48dp"
             android:contentDescription="Editar usuario"
             app:icon="@drawable/ic_edit"
@@ -87,7 +89,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/deleteButton"
             style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="48dp"
+            android:layout_width="44dp"
             android:layout_height="48dp"
             android:contentDescription="Eliminar usuario"
             app:icon="@drawable/ic_delete"

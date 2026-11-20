@@ -117,12 +117,33 @@
             app:icon="@drawable/ic_users"
             app:iconGravity="start" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/seedButton"
+            style="@style/Widget.IronMarket.Button.Outlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_s"
+            android:gravity="start|center_vertical"
+            android:text="Cargar productos de ejemplo"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="start" />
+
+        <TextView
+            android:id="@+id/sourceLabel"
+            style="@style/Text.IronMarket.Muted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_s"
+            android:textSize="12sp" />
+
         <TextView
             style="@style/Text.IronMarket.Section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_xl"
-            android:text="Actividad reciente" />
+            android:text="Últimas órdenes" />
 
         <LinearLayout
             android:id="@+id/activityLog"

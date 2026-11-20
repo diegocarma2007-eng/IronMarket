@@ -32,11 +32,14 @@
                     android:text="Hola" />
 
                 <TextView
+                    android:id="@+id/location"
                     style="@style/Text.IronMarket.Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="4dp"
                     android:fontFamily="@font/barlow_bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:text="Chapinero, Bogotá"
                     android:textSize="16sp"
                     app:drawableStartCompat="@drawable/ic_location"

@@ -9,6 +9,7 @@ import com.ironmarket.app.ui.common.RoleHostActivity
 class SellerActivity : RoleHostActivity() {
     override val menuRes = R.menu.menu_seller
 
+    /** Devuelve el fragmento que corresponde a la pestaña del menú inferior. */
     override fun fragmentFor(itemId: Int): Fragment = when (itemId) {
         R.id.nav_orders -> SellerOrdersFragment()
         R.id.nav_profile -> ProfileFragment()

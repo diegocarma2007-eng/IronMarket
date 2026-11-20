@@ -10,11 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
 import com.ironmarket.app.data.Category
-import com.ironmarket.app.data.DataRepository
+import com.ironmarket.app.data.Product
+import com.ironmarket.app.data.ProductStatus
+import com.ironmarket.app.data.Session
 import com.ironmarket.app.databinding.FragmentCatalogBinding
+import com.ironmarket.app.util.launchView
 import java.text.Normalizer
 
-/** Catálogo de productos con búsqueda en vivo y filtro por categoría. */
+/** Catálogo: carga los productos publicados y filtra en vivo por texto y categoría. */
 class CatalogFragment : Fragment() {
 
     companion object {
@@ -27,12 +30,15 @@ class CatalogFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: ProductGridAdapter
     private var category: Category? = null
+    private var all: List<Product> = emptyList()
 
+    /** Infla el layout de el catálogo con ViewBinding. */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, s: Bundle?): View {
         _binding = FragmentCatalogBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    /** Configura los controles de el catálogo y carga sus datos. */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         adapter = ProductGridAdapter(emptyList()) { p ->
             startActivity(Intent(requireContext(), ProductDetailActivity::class.java).putExtra(ProductDetailActivity.EXTRA_ID, p.id))
@@ -41,10 +47,9 @@ class CatalogFragment : Fragment() {
         binding.productList.adapter = adapter
 
         category = pendingCategory
-        // Chip "Todo" + un chip por categoría
-        val all = Chip(requireContext()).apply { text = "Todo"; isCheckable = true; isChecked = category == null }
-        all.setOnClickListener { category = null; filter() }
-        binding.categoryChips.addView(all)
+        val allChip = Chip(requireContext()).apply { text = "Todo"; isCheckable = true; isChecked = category == null }
+        allChip.setOnClickListener { category = null; filter() }
+        binding.categoryChips.addView(allChip)
         Category.entries.forEach { cat ->
             val chip = Chip(requireContext()).apply { text = cat.label; isCheckable = true; isChecked = cat == category }
             chip.setOnClickListener { category = cat; filter() }
@@ -54,20 +59,28 @@ class CatalogFragment : Fragment() {
         pendingQuery?.let { binding.searchInput.setText(it) }
         pendingQuery = null; pendingCategory = null
         binding.searchInput.doAfterTextChanged { filter() }
-        filter()
+
+        binding.resultCount.text = "Cargando productos…"
+        launchView {
+            all = Session.repo.getProducts(ProductStatus.PUBLICADO)
+            filter()
+        }
     }
 
+    /** Quita tildes y pasa a minúsculas para comparar búsquedas. */
     private fun normalize(s: String) =
         Normalizer.normalize(s.lowercase(), Normalizer.Form.NFD).replace("\\p{M}".toRegex(), "")
 
+    /** Aplica el texto de búsqueda y la categoría elegida a la lista cargada. */
     private fun filter() {
-        val q = normalize(binding.searchInput.text?.toString().orEmpty().trim())
-        val result = DataRepository.publishedProducts().filter {
+        val q = normalize(binding.searchInput.text?.toString().orEmpty().trim().take(100))
+        val result = all.filter {
             (category == null || it.category == category) && (q.isEmpty() || normalize(it.name).contains(q))
         }
         adapter.submit(result)
         binding.resultCount.text = "${result.size} productos"
     }
 
+    /** Libera la referencia al binding para evitar fugas de memoria. */
     override fun onDestroyView() { super.onDestroyView(); _binding = null }
 }

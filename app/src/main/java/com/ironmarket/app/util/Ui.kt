@@ -14,6 +14,7 @@ import java.util.Locale
 /** Formato de pesos colombianos: 189900 -> "$189.900" */
 fun Int.toCop(): String = "$" + NumberFormat.getIntegerInstance(Locale("es", "CO")).format(this)
 
+/** Valida el formato de un correo electrónico. */
 fun String.isValidEmail() = Patterns.EMAIL_ADDRESS.matcher(trim()).matches()
 
 /** Iniciales para los avatares: "Diego Jiménez" -> "DJ" */
@@ -34,16 +35,22 @@ fun TextView.badge(text: String, bgColor: Int, textColor: Int) {
     setTextColor(ContextCompat.getColor(context, textColor))
 }
 
+/** Pinta la etiqueta de estado de un producto. */
 fun TextView.statusBadge(status: ProductStatus) = when (status) {
     ProductStatus.PUBLICADO -> badge(status.label, R.color.im_lime_dark, R.color.im_lime)
     ProductStatus.EN_REVISION -> badge(status.label, R.color.im_warning_dark, R.color.im_warning)
     ProductStatus.RECHAZADO -> badge(status.label, R.color.im_danger_dark, R.color.im_danger)
 }
 
+/** Pinta la etiqueta de estado de una orden. */
 fun TextView.orderBadge(status: OrderStatus) = when (status) {
     OrderStatus.NUEVO -> badge(status.label, R.color.im_orange_dark, R.color.im_orange)
     OrderStatus.EN_CAMINO -> badge(status.label, R.color.im_blue_dark, R.color.im_blue)
     OrderStatus.ENTREGADO -> badge(status.label, R.color.im_lime_dark, R.color.im_lime)
 }
 
+/** Obtiene un color de los recursos. */
 fun Context.color(res: Int) = ContextCompat.getColor(this, res)
+
+/** Fecha corta en formato colombiano: 09/11/2026 */
+fun Long.toDate(): String = java.text.SimpleDateFormat("dd/MM/yyyy", Locale("es", "CO")).format(java.util.Date(this))

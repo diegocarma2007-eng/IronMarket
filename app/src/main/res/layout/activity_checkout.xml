@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Pasarela de pagos: dirección, tipo de entrega, medio de pago y confirmación -->
+<!-- Pasarela de pagos: dirección con geolocalización, tipo de entrega, resumen y pago con ePayco -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_xl"
-                android:text="ENTREGA" />
+                android:text="DIRECCIÓN DE ENTREGA" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -55,45 +55,42 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="@dimen/space_m">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/ic_location"
-                        app:tint="?attr/colorPrimary" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/addressLayout"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/space_m"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:hint="Dirección"
+                        app:startIconDrawable="@drawable/ic_location">
 
-                        <TextView
-                            android:id="@+id/address"
-                            style="@style/Text.IronMarket.Body"
-                            android:layout_width="wrap_content"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/addressInput"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/barlow_bold"
-                            android:text="Cra. 13 # 63-20, apto 502" />
-
-                        <TextView
-                            style="@style/Text.IronMarket.Muted"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Chapinero, Bogotá · detectada con tu ubicación" />
-                    </LinearLayout>
+                            android:inputType="textPostalAddress|textCapSentences" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/changeAddressButton"
-                        style="@style/Widget.IronMarket.Button.Text"
+                        android:id="@+id/locateButton"
+                        style="@style/Widget.IronMarket.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_s"
+                        android:minHeight="48dp"
+                        android:text="Usar mi ubicación actual"
+                        android:textSize="14sp"
+                        app:icon="@drawable/ic_location" />
+
+                    <TextView
+                        android:id="@+id/coordinates"
+                        style="@style/Text.IronMarket.Muted"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cambiar" />
+                        android:layout_marginTop="6dp"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -126,109 +123,68 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_l"
-                android:text="MÉTODO DE PAGO" />
+                android:text="RESUMEN" />
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/paymentToggle"
+            <TextView
+                android:id="@+id/itemsSummary"
+                style="@style/Text.IronMarket.Body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_s"
-                app:checkedButton="@id/payCard"
-                app:selectionRequired="true"
-                app:singleSelection="true">
+                android:background="@drawable/bg_card"
+                android:lineSpacingExtra="4dp"
+                android:padding="@dimen/space_l"
+                android:textSize="14sp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/payCard"
-                    style="@style/Widget.IronMarket.Button.Outlined"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tarjeta"
-                    android:textSize="14sp"
-                    app:icon="@drawable/ic_card" />
+            <TextView
+                style="@style/Text.IronMarket.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_l"
+                android:text="MÉTODO DE PAGO" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/payPse"
-                    style="@style/Widget.IronMarket.Button.Outlined"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="PSE"
-                    android:textSize="14sp"
-                    app:icon="@drawable/ic_bank" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/payWallet"
-                    style="@style/Widget.IronMarket.Button.Outlined"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Nequi"
-                    android:textSize="14sp"
-                    app:icon="@drawable/ic_phone" />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-
-            <!-- Datos de la tarjeta: solo visibles si se elige tarjeta -->
             <LinearLayout
-                android:id="@+id/cardForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_m"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/space_s"
+                android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/space_l">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/cardNumberLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Número de tarjeta"
-                    app:startIconDrawable="@drawable/ic_card">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/cardNumberInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:maxLength="16" />
-                </com.google.android.material.textfield.TextInputLayout>
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_card"
+                    app:tint="?attr/colorPrimary" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_s"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="@dimen/space_m"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/expiryLayout"
-                        android:layout_width="0dp"
+                    <TextView
+                        style="@style/Text.IronMarket.Body"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="MM/AA">
+                        android:fontFamily="@font/barlow_bold"
+                        android:text="ePayco" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/expiryInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="date"
-                            android:maxLength="5" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/cvvLayout"
-                        android:layout_width="0dp"
+                    <TextView
+                        style="@style/Text.IronMarket.Muted"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/space_s"
-                        android:layout_weight="1"
-                        android:hint="CVV"
-                        app:endIconMode="password_toggle">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/cvvInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="numberPassword"
-                            android:maxLength="4" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:text="Tarjeta, PSE, Nequi, Daviplata o efectivo" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/testBadge"
+                    style="@style/Text.IronMarket.Badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <TextView
@@ -314,7 +270,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_m"
-            android:text="@string/confirm_payment"
+            android:text="Pagar con ePayco"
             app:icon="@drawable/ic_fingerprint" />
     </LinearLayout>
 </LinearLayout>

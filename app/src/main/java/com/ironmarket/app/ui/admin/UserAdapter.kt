@@ -21,16 +21,21 @@ class UserAdapter(
 
     class VH(val b: ItemUserBinding) : RecyclerView.ViewHolder(b.root)
 
+    /** Reemplaza los elementos de la lista y redibuja. */
     fun submit(list: List<User>) { items = list; notifyDataSetChanged() }
 
+    /** Crea la vista de una fila a partir de su layout. */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         VH(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
+    /** Cantidad de elementos de la lista. */
     override fun getItemCount() = items.size
 
+    /** Llena la fila con los datos del elemento en la posición indicada. */
     override fun onBindViewHolder(holder: VH, position: Int) {
         val u = items[position]
         val ctx = holder.itemView.context
+        // Colores del avatar y del badge según el rol
         val (bg, fg) = when (u.role) {
             Role.COMPRADOR -> R.color.im_lime_dark to R.color.im_lime
             Role.VENDEDOR -> R.color.im_orange_dark to R.color.im_orange
